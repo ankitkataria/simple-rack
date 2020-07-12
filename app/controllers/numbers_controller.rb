@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'json'
-require 'pry'
 require 'hanami/controller'
 require 'hanami/validations'
 
@@ -29,10 +28,11 @@ module NumbersController
     def call(params)
       # return BAD_RESPONSE if invalid params
       halt 400 unless params.valid?
+      value = params.get(:value)
 
       response = {
-        value: params.get(:value),
-        value_in_words: 'bhai ki value in words'
+        value: value,
+        value_in_words: NumbersHelper.to_words(value)
       }
 
       self.body = response.to_json
