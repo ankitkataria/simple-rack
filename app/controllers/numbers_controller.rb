@@ -1,30 +1,41 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'pry'
 require 'hanami/controller'
 require 'hanami/validations'
 
 module NumbersController
-    NAME = "Ankit Kataria"
+  NAME = 'Ankit Kataria'
 
-    # Identity
-    class Identity 
-        include Hanami::Action
+  # Identity
+  class Identity
+    include Hanami::Action
 
-        def call(params)
-            response = {server_name: NAME}
-            self.body = response.to_json
-        end
+    def call(_params)
+      response = { server_name: NAME }
+      self.body = response.to_json
+    end
+  end
+
+  # Convert
+  class Convert
+    include Hanami::Action
+
+    params do
+      required(:value).filled(:int?, gteq?: 0)
     end
 
-    # Convert
-    class Convert
-        include Hanami::Action
+    def call(params)
+      # return BAD_RESPONSE if invalid params
+      halt 400 unless params.valid?
 
-        params do
-            required(:value)
-        end
+      response = {
+        value: params.get(:value),
+        value_in_words: 'bhai ki value in words'
+      }
 
-        def call(params)
-        end
+      self.body = response.to_json
     end
+  end
 end

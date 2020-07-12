@@ -1,8 +1,9 @@
-require 'hanami/router'
- 
-class Application
+# frozen_string_literal: true
 
-  # Application router 
+require 'hanami/router'
+
+# Application router
+class Application
   def self.router
     Hanami::Router.new do
       # identity
