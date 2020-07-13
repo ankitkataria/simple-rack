@@ -1,6 +1,6 @@
 # Simple Rack
 
-> A simple [rack](https://github.com/rack/rack) application to convert numerical values to words
+> A [rack](https://github.com/rack/rack) application to convert numerical values to words
 
 A simple rack-application built with the help of [hanami/controller](https://github.com/hanami/controller) and [hanami/router](https://github.com/hanami/router). The application is modelled around MVC approach with a directory stucture inspired from Rails.
 
@@ -28,7 +28,7 @@ $ docker run -p 3001:3001 -it simple-rack
 
 ```bash
 $ bundle install
-$ bundle exec --port 3001 rackup config.ru
+$ bundle exec rackup --port 3001 config.ru
 ```
 
 ## Sample cURL
@@ -47,7 +47,7 @@ $ curl http://localhost:3001/convert -X POST \
 
 ## Development
 
-Do not forget to run linter and appropriate specs before opening a pull request
+Run linter and appropriate specs before opening a pull request.
 
 ### Running linter and tests
 
@@ -56,7 +56,7 @@ Do not forget to run linter and appropriate specs before opening a pull request
 $ bundle exec rubocop
 
 # Run rspec
-$ bundle exec rspec
+$ bundle exec rspec --format documentation
 ```
 
 ## Licence
