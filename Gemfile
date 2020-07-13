@@ -10,5 +10,7 @@ gem 'rack'
 group :development do
   # Debug during runtime
   gem 'pry'
+  gem 'rack-test'
+  gem 'rspec'
   gem 'rubocop'
 end
